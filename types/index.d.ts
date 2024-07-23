@@ -131,3 +131,47 @@ declare type TransformedImageProps = {
 	hasDownload?: boolean;
 	setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+// ====== CONSTANT TYPES
+declare type NavLinkType = {
+	label: string;
+	route: string;
+	icon: string;
+};
+
+declare type PlansType = {
+	_id: number;
+	name: string;
+	icon: string;
+	price: number;
+	credits: number;
+	inclusions: {
+		label: string;
+		isIncluded: boolean;
+	}[];
+};
+
+declare type TransformationType = {
+	[key: string]: {
+		type: TransformationTypeKey;
+		title: string;
+		subtitle: string;
+		config: {
+			fillBackground?: boolean;
+			removeBackground?: boolean;
+			restore?: boolean;
+			recolor?: { prompt: string; to: string; multiple: boolean };
+			remove?: { prompt: string; removeShadow: boolean; multiple: boolean };
+		};
+		icon: string;
+	};
+};
+
+declare type AspectRationType = {
+	[key: string]: {
+		aspectRatio: string;
+		label: string;
+		width: number;
+		height: number;
+	};
+};
