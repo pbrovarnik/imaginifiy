@@ -8,6 +8,8 @@ import { redirect } from 'next/navigation';
 type Props = { params: { type: string } };
 
 const AddTransformationType = async ({ params: { type } }: Props) => {
+	if (type.includes('-')) type = type.replace(/-./g, (m) => m.toUpperCase()[1]);
+
 	const { userId } = auth();
 	const { title, subtitle, type: transformationType } = transformationTypes[type];
 
