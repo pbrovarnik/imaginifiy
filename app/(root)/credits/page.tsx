@@ -24,7 +24,7 @@ const Credits = async () => {
 				<ul className="credits-list">
 					{plans.map((plan) => (
 						<li key={plan.name} className="credits-item">
-							<div className="flex-center flex-col gap-3">
+							<div className="flex-center flex-col gap-2">
 								<Image src={plan.icon} alt="check" width={50} height={50} />
 								<p className="p-20-semibold mt-2 text-purple-500">{plan.name}</p>
 								<p className="h1-semibold text-dark-600">${plan.price}</p>
