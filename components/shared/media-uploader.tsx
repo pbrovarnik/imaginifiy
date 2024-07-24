@@ -3,9 +3,9 @@
 import React, { Dispatch } from 'react';
 import { useToast } from '../ui/use-toast';
 import { CldImage, CldUploadWidget } from 'next-cloudinary';
-import Image from 'next/image';
 import { dataUrl, getImageSize } from '@/lib/utils';
 import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
+import { SquarePlus } from 'lucide-react';
 
 type MediaUploaderProps = {
 	onValueChange: (value: string) => void;
@@ -77,7 +77,7 @@ const MediaUploader = ({ onValueChange, setImage, image, publicId, type }: Media
 					) : (
 						<div className="media-uploader_cta" onClick={() => open()}>
 							<div className="media-uploader_cta-image">
-								<Image src="/assets/icons/add.svg" alt="Add Image" width={24} height={24} />
+								<SquarePlus />
 							</div>
 							<p className="p-14-medium">Click here to upload image</p>
 						</div>

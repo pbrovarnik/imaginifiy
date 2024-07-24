@@ -4,51 +4,51 @@ import Link from 'next/link';
 import Header from '@/components/shared/header';
 import TransformedImage from '@/components/shared/transformed-image';
 import { Button } from '@/components/ui/button';
-import { getImageById } from '@/lib/actions/image.actions';
 import { getImageSize } from '@/lib/utils';
 import { auth } from '@clerk/nextjs/server';
 import DeleteConfirmation from '@/components/shared/delete-confirmation';
+import { getImageById } from '@/lib/actions/image.actions';
 
 const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
 	const { userId } = auth();
 
-	const image = await getImageById(id);
+	const imageById = await getImageById(id);
 
 	return (
 		<>
-			<Header title={image.title} />
+			<Header title={imageById.title} />
 			<section className="mt-5 flex flex-wrap gap-4">
 				<div className="p-14-medium md:p-16-medium flex gap-2">
 					<p className="text-foreground">Transformation:</p>
-					<p className=" capitalize text-purple-400">{image.transformationType}</p>
+					<p className=" capitalize text-purple-400">{imageById.transformationType}</p>
 				</div>
 
-				{image.prompt && (
+				{imageById.prompt && (
 					<>
 						<p className="hidden text-muted-foreground/40 md:block">&#x25CF;</p>
 						<div className="p-14-medium md:p-16-medium flex gap-2 ">
 							<p className="text-foreground">Prompt:</p>
-							<p className=" capitalize text-purple-400">{image.prompt}</p>
+							<p className=" capitalize text-purple-400">{imageById.prompt}</p>
 						</div>
 					</>
 				)}
 
-				{image.color && (
+				{imageById.color && (
 					<>
 						<p className="hidden text-muted-foreground/40 md:block">&#x25CF;</p>
 						<div className="p-14-medium md:p-16-medium flex gap-2">
 							<p className="text-foreground">Color:</p>
-							<p className=" capitalize text-purple-400">{image.color}</p>
+							<p className=" capitalize text-purple-400">{imageById.color}</p>
 						</div>
 					</>
 				)}
 
-				{image.aspectRatio && (
+				{imageById.aspectRatio && (
 					<>
 						<p className="hidden text-muted-foreground/40 md:block">&#x25CF;</p>
 						<div className="p-14-medium md:p-16-medium flex gap-2">
 							<p className="text-foreground">Aspect Ratio:</p>
-							<p className=" capitalize text-purple-400">{image.aspectRatio}</p>
+							<p className=" capitalize text-purple-400">{imageById.aspectRatio}</p>
 						</div>
 					</>
 				)}
@@ -61,25 +61,25 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
 						<h3 className="h3-bold text-foreground">Original</h3>
 
 						<Image
-							width={getImageSize(image.transformationType, image, 'width')}
-							height={getImageSize(image.transformationType, image, 'height')}
-							src={image.secureURL}
+							width={getImageSize(imageById.transformationType, imageById, 'width')}
+							height={getImageSize(imageById.transformationType, imageById, 'height')}
+							src={imageById.secureURL}
 							alt="image"
 							className="transformation-original_image"
 						/>
 					</div>
 
 					{/* TRANSFORMED IMAGE */}
-					<TransformedImage image={image} type={image.transformationType} title={image.title} isTransforming={false} transformationConfig={image.config} hasDownload={true} />
+					<TransformedImage image={imageById} type={imageById.transformationType} title={imageById.title} isTransforming={false} transformationConfig={imageById.config} hasDownload={true} />
 				</div>
 
-				{userId === image.author.clerkId && (
+				{userId === imageById.author.clerkId && (
 					<div className="mt-4 space-y-4">
-						<Button asChild type="button" variant="outline" className="capitalize w-full">
-							<Link href={`/transformations/${image._id}/update`}>Update Image</Link>
+						<Button asChild type="button" variant="secondary" className="capitalize w-full">
+							<Link href={`/transformations/${imageById._id}/update`}>Update Image</Link>
 						</Button>
 
-						<DeleteConfirmation imageId={image._id} />
+						<DeleteConfirmation imageId={imageById._id} />
 					</div>
 				)}
 			</section>

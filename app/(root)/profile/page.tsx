@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
 import { Collection } from '@/components/shared/collection';
@@ -6,6 +5,7 @@ import Header from '@/components/shared/header';
 import { auth } from '@clerk/nextjs/server';
 import { getUserById } from '@/lib/actions/user.actions';
 import { getUserImages } from '@/lib/actions/image.actions';
+import { HandCoins, Images } from 'lucide-react';
 
 const Profile = async ({ searchParams }: SearchParamProps) => {
 	const page = Number(searchParams?.page) || 1;
@@ -24,7 +24,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
 				<div className="profile-balance">
 					<p className="p-14-medium md:p-16-medium">CREDITS AVAILABLE</p>
 					<div className="mt-4 flex items-center gap-4">
-						<Image src="/assets/icons/coins.svg" alt="coins" width={50} height={50} className="size-9 md:size-12" />
+						<HandCoins className="size-9 md:size-12" />
 						<h2 className="h2-bold text-foreground">{user.creditBalance}</h2>
 					</div>
 				</div>
@@ -32,7 +32,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
 				<div className="profile-image-manipulation">
 					<p className="p-14-medium md:p-16-medium">IMAGE MANIPULATION DONE</p>
 					<div className="mt-4 flex items-center gap-4">
-						<Image src="/assets/icons/photo.svg" alt="coins" width={50} height={50} className="size-9 md:size-12" />
+						<Images className="size-9 md:size-12" />
 						<h2 className="h2-bold text-foreground">{images?.data.length}</h2>
 					</div>
 				</div>

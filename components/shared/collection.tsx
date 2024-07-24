@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { CldImage } from 'next-cloudinary';
@@ -57,16 +56,16 @@ export const Collection = ({ hasSearch = false, images, totalPages = 1, page }: 
 			{totalPages > 1 && (
 				<Pagination className="mt-10">
 					<PaginationContent className="flex w-full">
-						<Button disabled={Number(page) <= 1} className="collection-btn" onClick={() => onPageChange('prev')}>
-							<PaginationPrevious className="hover:bg-transparent hover:text-white" />
+						<Button disabled={Number(page) <= 1} variant="link" onClick={() => onPageChange('prev')}>
+							<PaginationPrevious className="hover:bg-transparent" />
 						</Button>
 
 						<p className="flex-center p-16-medium w-fit flex-1">
 							{page} / {totalPages}
 						</p>
 
-						<Button className="button w-32 bg-purple-gradient bg-cover text-white" onClick={() => onPageChange('next')} disabled={Number(page) >= totalPages}>
-							<PaginationNext className="hover:bg-transparent hover:text-white" />
+						<Button variant="link" className="w-32" onClick={() => onPageChange('next')} disabled={Number(page) >= totalPages}>
+							<PaginationNext className="hover:bg-transparent" />
 						</Button>
 					</PaginationContent>
 				</Pagination>
@@ -76,6 +75,8 @@ export const Collection = ({ hasSearch = false, images, totalPages = 1, page }: 
 };
 
 const Card = ({ image }: { image: IImageWithId }) => {
+	const Icon = transformationTypes[image.transformationType as TransformationTypeKey].Icon;
+
 	return (
 		<li>
 			<Link href={`/transformations/${image._id}`} className="collection-card">
@@ -91,7 +92,7 @@ const Card = ({ image }: { image: IImageWithId }) => {
 				/>
 				<div className="flex-between">
 					<p className="p-20-semibold mr-3 line-clamp-1 text-foreground">{image.title}</p>
-					<Image src={`/assets/icons/${transformationTypes[image.transformationType as TransformationTypeKey].icon}`} alt={image.title} width={24} height={24} />
+					<Icon />
 				</div>
 			</Link>
 		</li>

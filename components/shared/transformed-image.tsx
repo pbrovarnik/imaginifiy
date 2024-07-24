@@ -1,10 +1,9 @@
 'use client';
 
 import { dataUrl, debounce, download, getImageSize } from '@/lib/utils';
+import { CloudDownload, LoaderCircle } from 'lucide-react';
 import { CldImage, getCldImageUrl } from 'next-cloudinary';
 import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
-import Image from 'next/image';
-import React from 'react';
 
 const TransformedImage = ({ image, type, title, transformationConfig, isTransforming, setIsTransforming, hasDownload = false }: TransformedImageProps) => {
 	const downloadHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -28,7 +27,7 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
 
 				{hasDownload && (
 					<button className="download-btn" onClick={downloadHandler}>
-						<Image src="/assets/icons/download.svg" alt="Download" width={24} height={24} className="pb-[6px]" />
+						<CloudDownload className="pb-[6px]" />
 					</button>
 				)}
 			</div>
@@ -56,7 +55,7 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
 
 					{isTransforming && (
 						<div className="transforming-loader">
-							<Image src="/assets/icons/spinner.svg" width={50} height={50} alt="spinner" />
+							<LoaderCircle />
 							<p className="text-white/80">Please wait...</p>
 						</div>
 					)}

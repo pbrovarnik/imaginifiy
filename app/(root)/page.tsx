@@ -1,6 +1,5 @@
 import { navLinks } from '@/constants';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Collection } from '@/components/shared/collection';
 import { getAllImages } from '@/lib/actions/image.actions';
 

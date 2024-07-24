@@ -1,5 +1,4 @@
 import { SignedIn } from '@clerk/nextjs';
-import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
 import Header from '@/components/shared/header';
@@ -8,6 +7,7 @@ import { plans } from '@/constants';
 import { auth } from '@clerk/nextjs/server';
 import { getUserById } from '@/lib/actions/user.actions';
 import Checkout from '@/components/shared/checkout';
+import { CircleCheckBig, CircleX } from 'lucide-react';
 
 const Credits = async () => {
 	const { userId } = auth();
@@ -25,7 +25,7 @@ const Credits = async () => {
 					{plans.map((plan) => (
 						<li key={plan.name} className="credits-item">
 							<div className="flex-center flex-col gap-2">
-								<Image src={plan.icon} alt="check" width={50} height={50} />
+								<plan.Icon />
 								<p className="p-20-semibold mt-2 text-foreground">{plan.name}</p>
 								<p className="h1-semibold text-foreground">${plan.price}</p>
 								<p className="p-16-regular">{plan.credits} Credits</p>
@@ -35,7 +35,7 @@ const Credits = async () => {
 							<ul className="flex flex-col gap-5 py-9">
 								{plan.inclusions.map((inclusion) => (
 									<li key={plan.name + inclusion.label} className="flex items-center gap-4">
-										<Image src={`/assets/icons/${inclusion.isIncluded ? 'check.svg' : 'cross.svg'}`} alt="check" width={24} height={24} />
+										{inclusion.isIncluded ? <CircleCheckBig /> : <CircleX />}
 										<p className="p-16-regular">{inclusion.label}</p>
 									</li>
 								))}

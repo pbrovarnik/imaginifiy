@@ -1,4 +1,4 @@
-import { Home, Settings, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark } from 'lucide-react';
+import { Home, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark, Zap } from 'lucide-react';
 
 export const navLinks: NavLinkType[] = [
 	{
@@ -47,7 +47,7 @@ export const plans: PlansType[] = [
 	{
 		_id: 1,
 		name: 'Free',
-		icon: '/assets/icons/free-plan.svg',
+		Icon: Zap,
 		price: 0,
 		credits: 20,
 		inclusions: [
@@ -72,7 +72,7 @@ export const plans: PlansType[] = [
 	{
 		_id: 2,
 		name: 'Pro Package',
-		icon: '/assets/icons/free-plan.svg',
+		Icon: Zap,
 		price: 40,
 		credits: 120,
 		inclusions: [
@@ -97,7 +97,7 @@ export const plans: PlansType[] = [
 	{
 		_id: 3,
 		name: 'Premium Package',
-		icon: '/assets/icons/free-plan.svg',
+		Icon: Zap,
 		price: 199,
 		credits: 2000,
 		inclusions: [
@@ -127,21 +127,21 @@ export const transformationTypes: TransformationType = {
 		title: 'Restore Image',
 		subtitle: 'Refine images by removing noise and imperfections',
 		config: { restore: true },
-		icon: 'image.svg',
+		Icon: ImageIcon,
 	},
 	removeBackground: {
 		type: 'removeBackground',
 		title: 'Background Remove',
 		subtitle: 'Removes the background of the image using AI',
 		config: { removeBackground: true },
-		icon: 'camera.svg',
+		Icon: Camera,
 	},
 	fill: {
 		type: 'fill',
 		title: 'Generative Fill',
 		subtitle: "Enhance an image's dimensions using AI outpainting",
 		config: { fillBackground: true },
-		icon: 'stars.svg',
+		Icon: Sparkles,
 	},
 	remove: {
 		type: 'remove',
@@ -150,7 +150,7 @@ export const transformationTypes: TransformationType = {
 		config: {
 			remove: { prompt: '', removeShadow: true, multiple: true },
 		},
-		icon: 'scan.svg',
+		Icon: ScanQrCode,
 	},
 	recolor: {
 		type: 'recolor',
@@ -159,7 +159,7 @@ export const transformationTypes: TransformationType = {
 		config: {
 			recolor: { prompt: '', to: '', multiple: true },
 		},
-		icon: 'filter.svg',
+		Icon: SlidersHorizontal,
 	},
 };
 

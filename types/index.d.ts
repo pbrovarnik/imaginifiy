@@ -142,7 +142,7 @@ declare type NavLinkType = {
 declare type PlansType = {
 	_id: number;
 	name: string;
-	icon: string;
+	Icon: import('lucide-react').LucideIcon;
 	price: number;
 	credits: number;
 	inclusions: {
@@ -163,7 +163,7 @@ declare type TransformationType = {
 			recolor?: { prompt: string; to: string; multiple: boolean };
 			remove?: { prompt: string; removeShadow: boolean; multiple: boolean };
 		};
-		icon: string;
+		Icon: import('lucide-react').LucideIcon;
 	};
 };
 
