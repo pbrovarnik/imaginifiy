@@ -12,6 +12,7 @@ import ThemeToggle from './theme-toggle';
 
 const MobileNav = () => {
 	const pathname = usePathname();
+
 	return (
 		<header className="sticky flex w-full h-14 items-center gap-4 border-b bg-background px-4 lg:static lg:h-auto lg:border-0 lg:bg-transparent lg:px-6 lg:gap-4 lg:py-4 lg:pl-14 lg:hidden">
 			<nav className="flex justify-end items-center gap-2 w-full">
@@ -41,10 +42,12 @@ const MobileNav = () => {
 
 										return (
 											<li key={link.route}>
-												<Link className={`${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'} flex items-center text-[16px] gap-4 px-2.5`} href={link.route}>
-													<link.Icon className="h-5 w-5" />
-													{link.label}
-												</Link>
+												<SheetTrigger asChild>
+													<Link className={`${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'} flex items-center text-[16px] gap-4 px-2.5`} href={link.route}>
+														<link.Icon className="h-5 w-5" />
+														{link.label}
+													</Link>
+												</SheetTrigger>
 											</li>
 										);
 									})}
