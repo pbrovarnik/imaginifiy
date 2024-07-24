@@ -136,7 +136,7 @@ declare type TransformedImageProps = {
 declare type NavLinkType = {
 	label: string;
 	route: string;
-	icon: string;
+	Icon: import('lucide-react').LucideIcon;
 };
 
 declare type PlansType = {

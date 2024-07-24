@@ -7,51 +7,76 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '../ui/button';
+import { PanelRight } from 'lucide-react';
+import ThemeToggle from './theme-toggle';
 
 const MobileNav = () => {
 	const pathname = usePathname();
 	return (
-		<header className="header">
-			<Link href="/" className="flex items-center gap-2 md:py-2">
-				<Image src="/assets/images/logo-text.svg" alt="logo" width={180} height={28} />
-			</Link>
-			<nav className="flex gap-2">
+		<header className="sticky flex w-full h-14 items-center gap-4 border-b bg-background px-4 lg:static lg:h-auto lg:border-0 lg:bg-transparent lg:px-6 lg:gap-4 lg:py-4 lg:pl-14 lg:hidden">
+			<nav className="flex justify-end items-center gap-2 w-full">
 				<SignedIn>
-					<UserButton />
-
-					<Sheet>
-						<SheetTrigger>
-							<Image src="/assets/icons/menu.svg" alt="menu" width={32} height={32} className="cursor-pointer" />
-						</SheetTrigger>
-						<SheetContent className="sheet-content sm:w64">
-							<>
+					<div className="mr-[auto]">
+						<Sheet>
+							<SheetTrigger asChild>
+								<Button size="icon" variant="outline" className="lg:hidden">
+									<PanelRight className="h-5 w-5" />
+									<span className="sr-only">Toggle Menu</span>
+								</Button>
+							</SheetTrigger>
+							<SheetContent side="left" className="max-w-[280px] overflow-scroll">
 								<SheetHeader>
 									<SheetTitle>
-										<Image src="/assets/images/logo-text.svg" alt="logo" width={152} height={23} />
+										<Link href="/" className="group flex shrink-0 items-center gap-2">
+											<Image src="/assets/images/logo-text.svg" alt="logo" width={180} height={28} />
+											<span className="sr-only">Imaginifiy</span>
+										</Link>
 									</SheetTitle>
 									<SheetDescription className="hidden"></SheetDescription>
 								</SheetHeader>
 
-								<ul className="header-nav_elements">
+								<ul className="grid gap-6 text-lg font-medium mt-8">
 									{navLinks.map((link) => {
 										const isActive = link.route === pathname;
 
 										return (
-											<li key={link.route} className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}>
-												<Link className="sidebar-link cursor-pointer" href={link.route}>
-													<Image src={link.icon} alt="logo" width={24} height={24} />
+											<li key={link.route}>
+												<Link className={`${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'} flex items-center text-[16px] gap-4 px-2.5`} href={link.route}>
+													<link.Icon className="h-5 w-5" />
 													{link.label}
 												</Link>
 											</li>
 										);
 									})}
 								</ul>
-							</>
-						</SheetContent>
-					</Sheet>
+							</SheetContent>
+						</Sheet>
+					</div>
+					{/* <Breadcrumb className="hidden md:flex">
+					<BreadcrumbList>
+						<BreadcrumbItem>
+							<BreadcrumbLink asChild>
+								<Link href="#">Dashboard</Link>
+							</BreadcrumbLink>
+						</BreadcrumbItem>
+						<BreadcrumbSeparator />
+						<BreadcrumbItem>
+							<BreadcrumbLink asChild>
+								<Link href="#">Orders</Link>
+							</BreadcrumbLink>
+						</BreadcrumbItem>
+						<BreadcrumbSeparator />
+						<BreadcrumbItem>
+							<BreadcrumbPage>Recent Orders</BreadcrumbPage>
+						</BreadcrumbItem>
+					</BreadcrumbList>
+				</Breadcrumb> */}
+					<ThemeToggle />
+					<UserButton />
 				</SignedIn>
 				<SignedOut>
-					<Button asChild className="button bg-purple-gradient bg-cover">
+					<ThemeToggle />
+					<Button asChild variant="default" size="sm">
 						<Link href="/sign-in">Login</Link>
 					</Button>
 				</SignedOut>

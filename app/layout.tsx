@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
+import ThemeProvider from '@/components/shared/theme-provider';
 
 import './globals.css';
 
@@ -20,7 +21,11 @@ export default function RootLayout({
 	return (
 		<ClerkProvider afterSignOutUrl="/" appearance={{ variables: { colorPrimary: '#624cf5' } }}>
 			<html lang="en">
-				<body className={cn('font-IBMPlex antialiased', IBMPlex.variable)}>{children}</body>
+				<body className={cn('font-IBMPlex antialiased', IBMPlex.variable)}>
+					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+						{children}
+					</ThemeProvider>
+				</body>
 			</html>
 		</ClerkProvider>
 	);

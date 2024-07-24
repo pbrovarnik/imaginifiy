@@ -1,43 +1,45 @@
+import { Home, Settings, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark } from 'lucide-react';
+
 export const navLinks: NavLinkType[] = [
 	{
 		label: 'Home',
 		route: '/',
-		icon: '/assets/icons/home.svg',
+		Icon: Home,
 	},
 	{
 		label: 'Image Restore',
 		route: '/transformations/add/restore',
-		icon: '/assets/icons/image.svg',
+		Icon: ImageIcon,
 	},
 	{
 		label: 'Generative Fill',
 		route: '/transformations/add/fill',
-		icon: '/assets/icons/stars.svg',
+		Icon: Sparkles,
 	},
 	{
 		label: 'Object Remove',
 		route: '/transformations/add/remove',
-		icon: '/assets/icons/scan.svg',
+		Icon: ScanQrCode,
 	},
 	{
 		label: 'Object Recolor',
 		route: '/transformations/add/recolor',
-		icon: '/assets/icons/filter.svg',
+		Icon: SlidersHorizontal,
 	},
 	{
 		label: 'Background Remove',
 		route: '/transformations/add/remove-background',
-		icon: '/assets/icons/camera.svg',
+		Icon: Camera,
 	},
 	{
 		label: 'Profile',
 		route: '/profile',
-		icon: '/assets/icons/profile.svg',
+		Icon: User,
 	},
 	{
 		label: 'Buy Credits',
 		route: '/credits',
-		icon: '/assets/icons/bag.svg',
+		Icon: Landmark,
 	},
 ];
 
