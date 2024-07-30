@@ -7,8 +7,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '../ui/button';
-import { PanelRight } from 'lucide-react';
 import ThemeToggle from './theme-toggle';
+import { PanelRight, Home, ImageIcon, Sparkles, ScanQrCode, SlidersHorizontal, Camera, User, Landmark } from 'lucide-react';
+
+const iconMap = {
+	Home,
+	ImageIcon,
+	Sparkles,
+	ScanQrCode,
+	SlidersHorizontal,
+	Camera,
+	User,
+	Landmark,
+};
 
 const MobileNav = () => {
 	const pathname = usePathname();
@@ -39,12 +50,12 @@ const MobileNav = () => {
 								<ul className="grid gap-6 text-lg font-medium mt-8">
 									{navLinks.map((link) => {
 										const isActive = link.route === pathname;
-
+										const Icon = iconMap[link.iconName as keyof typeof iconMap];
 										return (
 											<li key={link.route}>
 												<SheetTrigger asChild>
 													<Link className={`${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'} flex items-center text-[16px] gap-4 px-2.5`} href={link.route}>
-														<link.Icon className="h-5 w-5" />
+														<Icon className="h-5 w-5" />
 														{link.label}
 													</Link>
 												</SheetTrigger>

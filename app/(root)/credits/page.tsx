@@ -7,7 +7,7 @@ import { plans } from '@/constants';
 import { auth } from '@clerk/nextjs/server';
 import { getUserById } from '@/lib/actions/user.actions';
 import Checkout from '@/components/shared/checkout';
-import { CircleCheckBig, CircleX } from 'lucide-react';
+import { CircleCheckBig, CircleX, Zap } from 'lucide-react';
 
 const Credits = async () => {
 	const { userId } = auth();
@@ -25,7 +25,7 @@ const Credits = async () => {
 					{plans.map((plan) => (
 						<li key={plan.name} className="credits-item">
 							<div className="flex-center flex-col gap-2">
-								<plan.Icon className="text-amber-400" />
+								<Zap className="text-amber-400" />
 								<p className="p-20-semibold mt-2 text-foreground">{plan.name}</p>
 								<p className="h1-semibold text-foreground">${plan.price}</p>
 								<p className="p-16-regular">{plan.credits} Credits</p>

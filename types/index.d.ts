@@ -136,13 +136,12 @@ declare type TransformedImageProps = {
 declare type NavLinkType = {
 	label: string;
 	route: string;
-	Icon: import('lucide-react').LucideIcon;
+	iconName: string;
 };
 
 declare type PlansType = {
 	_id: number;
 	name: string;
-	Icon: import('lucide-react').LucideIcon;
 	price: number;
 	credits: number;
 	inclusions: {
@@ -163,7 +162,7 @@ declare type TransformationType = {
 			recolor?: { prompt: string; to: string; multiple: boolean };
 			remove?: { prompt: string; removeShadow: boolean; multiple: boolean };
 		};
-		Icon: import('lucide-react').LucideIcon;
+		iconName: string;
 	};
 };
 

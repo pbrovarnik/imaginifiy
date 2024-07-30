@@ -7,6 +7,18 @@ import { usePathname } from 'next/navigation';
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import ThemeToggle from './theme-toggle';
+import { Home, ImageIcon, Sparkles, ScanQrCode, SlidersHorizontal, Camera, User, Landmark } from 'lucide-react';
+
+const iconMap = {
+	Home,
+	ImageIcon,
+	Sparkles,
+	ScanQrCode,
+	SlidersHorizontal,
+	Camera,
+	User,
+	Landmark,
+};
 
 const Sidebar = () => {
 	const pathname = usePathname();
@@ -26,6 +38,7 @@ const Sidebar = () => {
 					<ul className="flex flex-col items-start gap-3 px-2 sm:py-4 w-full">
 						{navLinks.slice(0, 6).map((link) => {
 							const isActive = link.route === pathname;
+							const Icon = iconMap[link.iconName as keyof typeof iconMap];
 
 							return (
 								<li key={link.route} className="w-full">
@@ -34,7 +47,7 @@ const Sidebar = () => {
 										className={`${
 											isActive ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
 										} group w-full px-3 py-2 flex justify-start items-center gap-2 rounded-lg transition-colors hover:text-foreground`}>
-										<link.Icon className="h-5 w-5" />
+										<Icon className="h-5 w-5" />
 										<span className="font-medium">{link.label}</span>
 									</Link>
 								</li>
@@ -44,7 +57,7 @@ const Sidebar = () => {
 					<ul className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-4">
 						{navLinks.slice(6).map((link) => {
 							const isActive = link.route === pathname;
-
+							const Icon = iconMap[link.iconName as keyof typeof iconMap];
 							return (
 								<li key={link.route} className="w-full">
 									<Link
@@ -52,7 +65,7 @@ const Sidebar = () => {
 										className={`${
 											isActive ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
 										} group w-full px-3 py-2 flex justify-start items-center gap-2 rounded-lg transition-colors hover:text-foreground`}>
-										<link.Icon className="h-5 w-5" />
+										<Icon className="h-5 w-5" />
 										<span className="font-medium">{link.label}</span>
 									</Link>
 								</li>

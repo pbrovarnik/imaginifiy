@@ -8,6 +8,7 @@ import { Pagination, PaginationContent, PaginationNext, PaginationPrevious } fro
 import { transformationTypes } from '@/constants';
 import { IImage } from '@/lib/database/models/image.model';
 import { formUrlQuery } from '@/lib/utils';
+import { ImageIcon, Camera, Sparkles, ScanQrCode, SlidersHorizontal } from 'lucide-react';
 
 import { Button } from '../ui/button';
 
@@ -74,8 +75,17 @@ export const Collection = ({ hasSearch = false, images, totalPages = 1, page }: 
 	);
 };
 
+const iconMap = {
+	ImageIcon,
+	Camera,
+	Sparkles,
+	SlidersHorizontal,
+	ScanQrCode,
+};
+
 const Card = ({ image }: { image: IImageWithId }) => {
-	const Icon = transformationTypes[image.transformationType as TransformationTypeKey].Icon;
+	const iconName = transformationTypes[image.transformationType as TransformationTypeKey].iconName;
+	const Icon = iconMap[iconName as keyof typeof iconMap];
 
 	return (
 		<li>

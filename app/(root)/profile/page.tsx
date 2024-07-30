@@ -32,7 +32,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
 				<div className="profile-image-manipulation">
 					<p className="p-14-medium md:p-16-medium">IMAGE MANIPULATION DONE</p>
 					<div className="mt-4 flex items-center gap-4">
-						<Images className="size-9 md:size-12 [&>circle]:text-amber-400 [&>rect]:text-yellow-900 [&>path:nth-of-type(2)]:text-green-600" />
+						<Images className="size-9 md:size-12" />
 						<h2 className="h2-bold text-foreground">{images?.data.length}</h2>
 					</div>
 				</div>

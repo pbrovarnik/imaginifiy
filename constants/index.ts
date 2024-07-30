@@ -1,47 +1,43 @@
-'use client';
-
-import { Home as HomeIcon, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark, Zap } from 'lucide-react';
-
 export const navLinks: NavLinkType[] = [
 	{
 		label: 'Home',
 		route: '/',
-		Icon: HomeIcon,
+		iconName: 'Home',
 	},
 	{
 		label: 'Image Restore',
 		route: '/transformations/add/restore',
-		Icon: ImageIcon,
+		iconName: 'ImageIcon',
 	},
 	{
 		label: 'Generative Fill',
 		route: '/transformations/add/fill',
-		Icon: Sparkles,
+		iconName: 'Sparkles',
 	},
 	{
 		label: 'Object Remove',
 		route: '/transformations/add/remove',
-		Icon: ScanQrCode,
+		iconName: 'ScanQrCode',
 	},
 	{
 		label: 'Object Recolor',
 		route: '/transformations/add/recolor',
-		Icon: SlidersHorizontal,
+		iconName: 'SlidersHorizontal',
 	},
 	{
 		label: 'Background Remove',
 		route: '/transformations/add/remove-background',
-		Icon: Camera,
+		iconName: 'Camera',
 	},
 	{
 		label: 'Profile',
 		route: '/profile',
-		Icon: User,
+		iconName: 'User',
 	},
 	{
 		label: 'Buy Credits',
 		route: '/credits',
-		Icon: Landmark,
+		iconName: 'Landmark',
 	},
 ];
 
@@ -49,7 +45,6 @@ export const plans: PlansType[] = [
 	{
 		_id: 1,
 		name: 'Free',
-		Icon: Zap,
 		price: 0,
 		credits: 20,
 		inclusions: [
@@ -74,7 +69,6 @@ export const plans: PlansType[] = [
 	{
 		_id: 2,
 		name: 'Pro Package',
-		Icon: Zap,
 		price: 40,
 		credits: 120,
 		inclusions: [
@@ -99,7 +93,6 @@ export const plans: PlansType[] = [
 	{
 		_id: 3,
 		name: 'Premium Package',
-		Icon: Zap,
 		price: 199,
 		credits: 2000,
 		inclusions: [
@@ -129,21 +122,21 @@ export const transformationTypes: TransformationType = {
 		title: 'Restore Image',
 		subtitle: 'Refine images by removing noise and imperfections',
 		config: { restore: true },
-		Icon: ImageIcon,
+		iconName: 'ImageIcon',
 	},
 	removeBackground: {
 		type: 'removeBackground',
 		title: 'Background Remove',
 		subtitle: 'Removes the background of the image using AI',
 		config: { removeBackground: true },
-		Icon: Camera,
+		iconName: 'Camera',
 	},
 	fill: {
 		type: 'fill',
 		title: 'Generative Fill',
 		subtitle: "Enhance an image's dimensions using AI outpainting",
 		config: { fillBackground: true },
-		Icon: Sparkles,
+		iconName: 'Sparkles',
 	},
 	remove: {
 		type: 'remove',
@@ -152,7 +145,7 @@ export const transformationTypes: TransformationType = {
 		config: {
 			remove: { prompt: '', removeShadow: true, multiple: true },
 		},
-		Icon: ScanQrCode,
+		iconName: 'ScanQrCode',
 	},
 	recolor: {
 		type: 'recolor',
@@ -161,7 +154,7 @@ export const transformationTypes: TransformationType = {
 		config: {
 			recolor: { prompt: '', to: '', multiple: true },
 		},
-		Icon: SlidersHorizontal,
+		iconName: 'SlidersHorizontal',
 	},
 };
 

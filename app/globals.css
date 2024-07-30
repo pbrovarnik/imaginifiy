@@ -277,3 +277,12 @@
 		@apply flex-center p-14-medium h-full min-h-72 flex-col gap-5 rounded-[16px] border border-dashed bg-purple-100/20 shadow-inner;
 	}
 }
+
+/* =====  CLERK OVERRIDES */
+.cl-userButtonBox {
+	@apply flex flex-row-reverse gap-1;
+}
+
+.cl-userButtonOuterIdentifier {
+	@apply text-accent-foreground text-[16px];
+}
