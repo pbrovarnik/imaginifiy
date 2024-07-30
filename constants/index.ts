@@ -1,3 +1,5 @@
+'use client';
+
 import { Home as HomeIcon, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark, Zap } from 'lucide-react';
 
 export const navLinks: NavLinkType[] = [
