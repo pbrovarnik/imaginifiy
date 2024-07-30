@@ -1,10 +1,10 @@
-import { Home, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark, Zap } from 'lucide-react';
+import { Home as HomeIcon, User, Image as ImageIcon, Sparkles, Camera, SlidersHorizontal, ScanQrCode, Landmark, Zap } from 'lucide-react';
 
 export const navLinks: NavLinkType[] = [
 	{
 		label: 'Home',
 		route: '/',
-		Icon: Home,
+		Icon: HomeIcon,
 	},
 	{
 		label: 'Image Restore',
