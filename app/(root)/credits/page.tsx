@@ -25,7 +25,7 @@ const Credits = async () => {
 					{plans.map((plan) => (
 						<li key={plan.name} className="credits-item">
 							<div className="flex-center flex-col gap-2">
-								<plan.Icon />
+								<plan.Icon className="text-amber-400" />
 								<p className="p-20-semibold mt-2 text-foreground">{plan.name}</p>
 								<p className="h1-semibold text-foreground">${plan.price}</p>
 								<p className="p-16-regular">{plan.credits} Credits</p>
@@ -35,7 +35,7 @@ const Credits = async () => {
 							<ul className="flex flex-col gap-5 py-9">
 								{plan.inclusions.map((inclusion) => (
 									<li key={plan.name + inclusion.label} className="flex items-center gap-4">
-										{inclusion.isIncluded ? <CircleCheckBig /> : <CircleX />}
+										{inclusion.isIncluded ? <CircleCheckBig className="text-green-600" /> : <CircleX className="text-red-600" />}
 										<p className="p-16-regular">{inclusion.label}</p>
 									</li>
 								))}
